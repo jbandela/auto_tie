@@ -3,7 +3,6 @@
 #include <iostream>
 #include <memory>
 #include <string>
-#include <algorithm>
 #include <vector>
 #include <map>
 
@@ -40,14 +39,6 @@ int main() {
 	auto s2 = id_gpa_name = get_student();
 	std::cout << "name: " << s2.name << " id: " << s2.id << " gpa: " << *s2.gpa << "\n";
 
-
-
-
-	auto t = s.as_tuple_ref();
-
-	std::cout << "name: " << s.name << " id: " << s.id << " gpa: " << *s.gpa << "\n";
-
-	auto t2 = std::move(s).to_tuple();
 
 	// Should be error here
 	// auto s2 = AUTO_TIE_REF(id, gpa, name) = get_student();
