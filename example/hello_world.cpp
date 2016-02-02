@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 #include <map>
-
+#include <set>
 
 
 
@@ -18,6 +18,39 @@ std::tuple<int,std::unique_ptr<double>,std::string> get_student() {
 
 
 int main() {
+
+	// Set of student id, name, gpa,grade
+	std::set<std::tuple<int,std::string,char,double>> myset;
+
+
+	// Current
+	{
+		bool success;
+		std::set<std::tuple<int,std::string,char,double>>::iterator iterator;
+
+		std::tie(iterator, success) = myset.insert(std::make_tuple(1,"John",'A',4.0));
+
+		if (success) {
+			int id;
+			std::string name;
+			char grade;
+			double gpa;
+
+			std::tie(id, name, grade, gpa) = *iterator;
+			std::cout << "Successfully inserted " << id << " " << " " << name << " " << grade << " " << gpa << "\n";
+		}
+	}
+
+
+	// auto_tie
+	{
+		auto r = AUTO_TIE(iterator, success) = myset.insert(std::make_tuple(2,"Raja",'B',3.1)); 
+
+		if (r.success) {
+			auto s = AUTO_TIE_REF(id, name, grade, gpa) = *r.iterator;
+			std::cout << "Successfully inserted " << s.id << " " << " " << s.name << " " << s.grade << " " << s.gpa << "\n";
+		}
+	}
 
 
 	auto s = AUTO_TIE(id, gpa, name) = get_student();
