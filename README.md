@@ -102,7 +102,7 @@ Then we can use a helper class to fill in with the tuple values;
 ```cpp
 struct auto_tie_helper{
   
- template<class Tuple}
+ template<class Tuple>
  auto operator=(Tuple&& t){
    using T = xyz_elements<std::tuple_element_t<0,Tuple>,
      std::tuple_element_t<1,Tuple>,std::tuple_element_t<2,Tuple>>;
