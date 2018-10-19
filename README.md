@@ -88,7 +88,7 @@ And we wanted to access the tuple elements as x,y,z.
 Here is one way we could do this.
 
 ```cpp
-template<class T1, class T2, class T2>
+template<class T1, class T2, class T3>
 struct xyz_elements{
  T1 x;
  T2 y;
